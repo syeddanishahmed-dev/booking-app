@@ -9,10 +9,8 @@ const router = express.Router();
 
 
 //CREATE
-router.post("/", async (req,res)=>{
+router.post("/", createHotel)
 
-
-});
 //UPDATE
 router.put("/:id", async (req,res)=>{
              
