@@ -9,6 +9,7 @@ const router = express.Router();
 
 
 //CREATE
+
 router.post("/", createHotel)
 
 //UPDATE
