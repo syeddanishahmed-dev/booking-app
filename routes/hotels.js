@@ -10,6 +10,7 @@ import {
 
 import Hotel from "../models/Hotel.js"
 
+//import { get } from "mongoose";//
 
 const router = express.Router();
 
