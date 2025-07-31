@@ -6,6 +6,7 @@ import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import SearchItem from "../../components/searchItem/SearchItem";
 import "./list.css";
+import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
@@ -18,6 +19,8 @@ const List = () => {
   // const cityParam = destination ? `city=${destination}&` : "";
   //  const { data, error, loading, reFetch } = useFetch(`${import.meta.env.VITE_API_URL}/api/hotels?${cityParam}min=${min || 0}&max=${max || 9999}`)
   // console.log(data);
+
+  const { data, loading, error, refetch } = useFetch(`/api/hotels?city=${destination}`)
 
   return (
     <div>
@@ -91,15 +94,11 @@ const List = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {loading ? "loading" : <>
+            {data.map((item) => (
+              <SearchItem item={item} key={item._id}/>
+            ))}
+            </>}
           </div>
         </div>
       </div>
